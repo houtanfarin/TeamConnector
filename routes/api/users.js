@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const jwt= require('jsonwebtoken');
 const config = require ('config');
 const { check , validationResult } = require('express-validator');
-
 const User = require('../../models/User');
 
 // @roue POST api/users
@@ -14,10 +13,11 @@ const User = require('../../models/User');
 
 router.post('/', 
     [
-      check('name', 'Name is required').notEmpty(),
+      check('name', 'Name is required').not().isEmpty(),
       check('email', 'Please include valid email').isEmail(),
       check('password', 'Please enter password with 6 or more characters').isLength({ min: 6 })
     ], async (req, res) => {
+      //Finds the validation errors in this request and wraps them in an object w/ function
     const errors = validationResult(req);
       if(!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -33,11 +33,11 @@ router.post('/',
       }
       // get users gravatar
       const avatar = gravatar.url(email, { 
-        size: '200',
-        rating: 'pg',
-        default: 'mm'
+        s: '200',
+        r: 'pg',
+        d: 'mm'
       })
-
+      //create the instance of user
       user = new User({ 
         name,
         email,

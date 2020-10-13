@@ -8,7 +8,7 @@ connectDB();
 
 //init middleware
 //app.use(bodyParser.json())
-app.use(express.json({ extended: false }));
+app.use(express.json({ extend: true }));
 
 app.get('/', (req, res) => res.send('API Running'));
 
