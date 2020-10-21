@@ -8,8 +8,8 @@ const Landing = () => {
         <div className="landing-inner">
           <h1 className="x-large">Team Connector</h1>
           <p className="lead">
-            Create a developer profile/portfolio, share posts and get help from
-            other developers
+            Create a profile or portfolio, share posts and connect with
+            others.
           </p>
           <div className="buttons">
             <Link to="register" className="btn btn-primary">Sign Up</Link>
@@ -21,4 +21,4 @@ const Landing = () => {
     )
 }
 
-export default Landing
+export default Landing;
